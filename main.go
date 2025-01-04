@@ -8,6 +8,11 @@ import (
 )
 
 func main() {
+	// Check if no names provided as arguments
+	if len(os.Args) < 2 {
+		fmt.Println("No names provided")
+		return
+	}
 	// Check if more than 2 names are provided as arguments
 	if len(os.Args) < 3 {
 		fmt.Println("Please provide more than one name as arguments.")
@@ -16,6 +21,9 @@ func main() {
 
 	// Declare a slice of names from the provided arguments
 	names := os.Args[1:]
+
+	// Print how many names were provided
+	fmt.Println("Number of provided names:", len(names))
 
 	// Initialise the default source to a deterministic state
 	// If Seed() is not called the same pseudo-random sequence is generated
