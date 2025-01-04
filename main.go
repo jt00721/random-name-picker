@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
+	"time"
 )
 
 func main() {
@@ -15,6 +17,15 @@ func main() {
 	// Declare a slice of names from the provided arguments
 	names := os.Args[1:]
 
-	// Print the provided names
-	fmt.Println("Names provided:", names)
+	// Initialise the default source to a deterministic state
+	// If Seed() is not called the same pseudo-random sequence is generated
+	// i.e. The same option (name) will be output
+	rand.Seed(time.Now().UnixNano())
+
+	// Randomly select a number from 0 to the length of names - 1
+	// Use the randomly selected number as the index to use for the names slice
+	selectedName := names[rand.Intn(len(names))]
+
+	// Print the randomly selected namee
+	fmt.Println("Randomly selected name:", selectedName)
 }
